@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Continuous Vertical scrolling - fullPage.js</title>
+  <meta name="author" content="Matthew Howell" />
+  <meta name="description" content="fullPage continuous scrolling demo." />
+  <meta name="keywords" content="fullpage,jquery,demo,scroll,loop,continuous" />
+  <meta name="Resource-type" content="Document" />
+
+
+  <link rel="stylesheet" type="text/css" href="../dist/fullpage.css" />
+  <link rel="stylesheet" type="text/css" href="examples.css" />
+
+  <!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+</head>
+
+<body>
+
+
+  <ul id="menu">
+    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First slide</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+    <li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+  </ul>
+
+  <div id="fullpage">
+    <div class="section " id="section0">
+      <div class="slide" id="slide1">
+        <h1>fullPage.js</h1>
+        <p>Continuous Scrolling Enabled</p>
+      </div>
+      <div class="slide" id="slide2">
+        <h1>fullPage.js</h1>
+        <p>Continuous Scrolling Enabled</p>
+      </div>
+    </div>
+    <div class="section" id="section1">
+      <div class="intro">
+        <h1>Keep Scrolling</h1>
+        <p>Move to the first section and scroll up or move to the last and scroll down to see how it works.</p>
+      </div>
+    </div>
+    <div class="section" id="section2">
+      <div class="intro">
+        <h1>Scroll Down</h1>
+        <p>And it will animate down to the first section</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="../dist/fullpage.js"></script>
+  <script type="text/javascript" src="examples.js"></script>
+
+  <script type="text/javascript">
+    var myFullpage = new fullpage('#fullpage', {
+      sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+      anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+      menu: '#menu',
+      continuousVertical: true,
+      navigation: true,
+      afterLoad: function (origin, destination, direction, trigger) {
+        console.log("afterLoad: destination:" + destination.index);
+      },
+      onLeave: function (origin, destination, direction, trigger) {
+        console.log("onLeave: destination:" + destination.index);
+      },
+      
+    });
+  </script>
+
+</body>
+
+</html>
